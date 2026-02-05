@@ -99,8 +99,8 @@ export const translations = {
       lang_toggle: "KR"
     },
     hero: {
-      title_start: "보이스 AI의",
-      title_end: "미래",
+      title_start: "보이스 AI의 미래",
+      title_end: "Celeb 보이스",
       subtitle: "사람보다 더 사람 같은 고품질 음성 복제와 글로벌 더빙 솔루션을 경험해보세요.",
       cta: "기능 살펴보기"
     },
