@@ -39,7 +39,7 @@ export async function sendEmail(formData) {
 
         const mailOptions = {
             from: `"${name}" <${process.env.SMTP_USER}>`, // Sender address (often must match auth user)
-            to: "info@witz.ai", // List of receivers
+            to: "witz.base@gmail.com", // List of receivers
             replyTo: email, // Actual sender's email
             subject: `[VoiceCeleb Inquiry] Message from ${name}`,
             text: `
