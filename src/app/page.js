@@ -16,7 +16,7 @@ const Footer = () => (
           </a>
         ))}
       </div>
-      <p>&copy; 2024 VoiceCeleb AI. All rights reserved.</p>
+      <p>&copy; 2026 VoiceCeleb AI. All rights reserved.</p>
     </div>
   </footer>
 );
