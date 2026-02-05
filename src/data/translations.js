@@ -69,8 +69,8 @@ export const translations = {
         submit: "Send Message"
       },
       info: {
-        address: "123 Teheran-ro, Gangnam-gu, Seoul, South Korea",
-        email: "support@voiceceleb.ai"
+        address: "301, 40, Geumto-ro 80beon-gil, Sujeong-gu, Seongnam-si, Gyeonggi-do",
+        email: "info@witz.ai"
       }
     },
     playground: {
@@ -160,8 +160,8 @@ export const translations = {
         submit: "전송하기"
       },
       info: {
-        address: "서울특별시 강남구 테헤란로 123",
-        email: "support@voiceceleb.ai"
+        address: "경기도 성남시 수정구 금토로80번길 40, 301호",
+        email: "info@witz.ai"
       }
     },
     playground: {
