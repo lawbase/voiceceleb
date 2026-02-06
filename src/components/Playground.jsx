@@ -1,28 +1,64 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
-import { Mic, Video, Upload, Play, Pause, Download, Wand2 } from 'lucide-react';
+import { Mic, Video, Upload, Play, Pause, Download, Wand2, Languages, Loader2 } from 'lucide-react';
+import { generateAudio } from '@/app/actions';
 
 const Playground = () => {
     const { t } = useLanguage();
     const [activeTab, setActiveTab] = useState('TTS'); // 'TTS' or 'DUBBING'
     const [inputText, setInputText] = useState('');
     const [isGenerating, setIsGenerating] = useState(false);
+    const audioRef = useRef(null);
     const [hasGenerated, setHasGenerated] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [activeVoice, setActiveVoice] = useState('alloy'); // Default voice
 
-    // Mock Generation
-    const handleGenerate = () => {
+    // Handle audio playback ending
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.onended = () => {
+                setIsPlaying(false);
+            };
+        }
+    }, []);
+
+    const handleGenerate = async () => {
         if (!inputText && activeTab === 'TTS') return; // Simple validation
         setIsGenerating(true);
-        setHasGenerated(false);
+        setHasGenerated(false); // Reset generated state
 
-        // Simulate API call
-        setTimeout(() => {
+        try {
+            const result = await generateAudio(inputText, activeVoice);
+            if (result.success) {
+                const audioSrc = `data:audio/mp3;base64,${result.audioContent}`;
+                if (audioRef.current) {
+                    audioRef.current.src = audioSrc;
+                    audioRef.current.play();
+                    setIsPlaying(true);
+                    setHasGenerated(true); // Set generated state on successful playback
+                }
+            } else {
+                alert(`Error: ${result.error}`);
+            }
+        } catch (e) {
+            console.error("Failed to generate audio:", e);
+            alert("Failed to generate audio");
+        } finally {
             setIsGenerating(false);
-            setHasGenerated(true);
-        }, 2000);
+        }
+    };
+
+    const handlePlayPause = () => {
+        if (audioRef.current) {
+            if (isPlaying) {
+                audioRef.current.pause();
+            } else {
+                audioRef.current.play();
+            }
+            setIsPlaying(!isPlaying);
+        }
     };
 
     return (
@@ -34,14 +70,14 @@ const Playground = () => {
                     {/* Tabs */}
                     <div className="inline-flex bg-white/5 p-1 rounded-full border border-white/10 backdrop-blur-sm">
                         <button
-                            onClick={() => { setActiveTab('TTS'); setHasGenerated(false); }}
+                            onClick={() => { setActiveTab('TTS'); setHasGenerated(false); setIsPlaying(false); if (audioRef.current) audioRef.current.pause(); }}
                             className={`px-8 py-3 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${activeTab === 'TTS' ? 'bg-accent-blue text-white shadow-lg shadow-accent-blue/25' : 'text-slate-400 hover:text-white'}`}
                         >
                             <Mic className="w-4 h-4" />
                             {t.playground.tab_tts}
                         </button>
                         <button
-                            onClick={() => { setActiveTab('DUBBING'); setHasGenerated(false); }}
+                            onClick={() => { setActiveTab('DUBBING'); setHasGenerated(false); setIsPlaying(false); if (audioRef.current) audioRef.current.pause(); }}
                             className={`px-8 py-3 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${activeTab === 'DUBBING' ? 'bg-accent-violet text-white shadow-lg shadow-accent-violet/25' : 'text-slate-400 hover:text-white'}`}
                         >
                             <Video className="w-4 h-4" />
@@ -126,7 +162,7 @@ const Playground = () => {
                                             key={i}
                                             className="w-1.5 bg-gradient-to-t from-accent-blue to-accent-violet rounded-full"
                                             style={{
-                                                height: isPlaying ? `${Math.random() * 100}%` : '20%',
+                                                height: isPlaying ? `${Math.random() * 100}% ` : '20%',
                                                 transition: 'height 0.1s ease'
                                             }}
                                         />

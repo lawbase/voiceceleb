@@ -72,3 +72,54 @@ ${message}
         return { success: false, error: 'Failed to send email. Please try again later.' };
     }
 }
+
+export async function generateAudio(text, voiceId) {
+    const apiKey = process.env.GOOGLE_API_KEY;
+    if (!apiKey) {
+        return { success: false, error: 'API Key is missing.' };
+    }
+
+    // Map simple voice IDs to Google TTS Voice names
+    // This is a simplified mapping. Real app would have a robust map.
+    const voiceMap = {
+        'male_std': { languageCode: 'ko-KR', name: 'ko-KR-Neural2-C' }, // Male Neural
+        'female_std': { languageCode: 'ko-KR', name: 'ko-KR-Neural2-A' }, // Female Neural
+        'male_pro': { languageCode: 'en-US', name: 'en-US-Studio-M' }, // Studio Male
+        'female_emo': { languageCode: 'en-US', name: 'en-US-Studio-O' }, // Studio Female
+        // Default fallback
+        'default': { languageCode: 'ko-KR', name: 'ko-KR-Neural2-A' }
+    };
+
+    const selectedVoice = voiceMap[voiceId] || voiceMap['default'];
+
+    const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
+
+    const payload = {
+        input: { text: text },
+        voice: selectedVoice,
+        audioConfig: { audioEncoding: 'MP3' }
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('TTS API API Error:', errorData);
+            return { success: false, error: errorData.error?.message || 'TTS request failed' };
+        }
+
+        const data = await response.json();
+        return { success: true, audioContent: data.audioContent }; // Base64 string
+
+    } catch (error) {
+        console.error('Error generating audio:', error);
+        return { success: false, error: 'Failed to generate audio.' };
+    }
+}
