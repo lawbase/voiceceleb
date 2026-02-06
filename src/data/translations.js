@@ -8,8 +8,8 @@ export const translations = {
       lang_toggle: "EN"
     },
     hero: {
-      title_start: "The Future of",
-      title_end: "Voice AI",
+      title_start: "The Future of Voice AI",
+      title_end: "Celeb Voice",
       subtitle: "Experience high-fidelity voice cloning and global dubbing solutions that sound undeniably human.",
       cta: "Explore Features"
     },
