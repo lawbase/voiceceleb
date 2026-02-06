@@ -14,6 +14,11 @@ export async function sendEmail(formData) {
 
     // Debug: Log the attempt
     console.log(`Attempting to send email from ${email} (${name})`);
+    console.log('SMTP Config Check:', {
+        host: process.env.SMTP_HOST,
+        user: process.env.SMTP_USER,
+        hasPass: !!process.env.SMTP_PASS
+    });
 
     // Check if SMTP variables are set
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER) {
