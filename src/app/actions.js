@@ -1,6 +1,7 @@
 'use server';
 
 import nodemailer from 'nodemailer';
+import OpenAI from 'openai';
 
 export async function sendEmail(formData) {
     const name = formData.get('name');
@@ -73,53 +74,50 @@ ${message}
     }
 }
 
+
 export async function generateAudio(text, voiceId) {
-    const apiKey = process.env.GOOGLE_API_KEY;
+    const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
-        return { success: false, error: 'API Key is missing.' };
+        return { success: false, error: 'OpenAI API Key is missing.' };
     }
 
-    // Map simple voice IDs to Google TTS Voice names
-    // This is a simplified mapping. Real app would have a robust map.
+    const openai = new OpenAI({
+        apiKey: apiKey,
+    });
+
+
+
+    // Map internal voice IDs to OpenAI Voice names
+
     const voiceMap = {
-        'male_std': { languageCode: 'ko-KR', name: 'ko-KR-Neural2-C' }, // Male Neural
-        'female_std': { languageCode: 'ko-KR', name: 'ko-KR-Neural2-A' }, // Female Neural
-        'male_pro': { languageCode: 'en-US', name: 'en-US-Studio-M' }, // Studio Male
-        'female_emo': { languageCode: 'en-US', name: 'en-US-Studio-O' }, // Studio Female
-        // Default fallback
-        'default': { languageCode: 'ko-KR', name: 'ko-KR-Neural2-A' }
+        'alloy': 'alloy',
+        'echo': 'echo',
+        'fable': 'fable',
+        'onyx': 'onyx',
+        'nova': 'nova',
+        'shimmer': 'shimmer',
+        // Fallback
+        'default': 'alloy'
     };
 
     const selectedVoice = voiceMap[voiceId] || voiceMap['default'];
 
-    const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
-
-    const payload = {
-        input: { text: text },
-        voice: selectedVoice,
-        audioConfig: { audioEncoding: 'MP3' }
-    };
-
     try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload)
+        const mp3 = await openai.audio.speech.create({
+            model: "tts-1",
+            voice: selectedVoice,
+            input: text,
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error('TTS API API Error:', errorData);
-            return { success: false, error: errorData.error?.message || 'TTS request failed' };
-        }
 
-        const data = await response.json();
-        return { success: true, audioContent: data.audioContent }; // Base64 string
+        const buffer = Buffer.from(await mp3.arrayBuffer());
+
+        const audioContent = buffer.toString('base64');
+
+        return { success: true, audioContent: audioContent };
 
     } catch (error) {
-        console.error('Error generating audio:', error);
-        return { success: false, error: 'Failed to generate audio.' };
+        console.error('Error generating audio with OpenAI:', error);
+        return { success: false, error: error.message || 'Failed to generate audio.' };
     }
 }

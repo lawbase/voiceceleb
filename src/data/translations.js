@@ -80,10 +80,12 @@ export const translations = {
       input_placeholder: "Type something here to generate speech...",
       voice_label: "Select Voice",
       voice_options: {
-        male_std: "Male (Standard)",
-        female_std: "Female (Standard)",
-        male_pro: "Male (Professional)",
-        female_emo: "Female (Emotional)"
+        alloy: "Alloy",
+        echo: "Echo",
+        fable: "Fable",
+        onyx: "Onyx",
+        nova: "Nova",
+        shimmer: "Shimmer"
       },
       btn_generate: "Generate Audio",
       btn_generating: "Generating...",
@@ -171,10 +173,12 @@ export const translations = {
       input_placeholder: "음성으로 변환할 텍스트를 입력하세요...",
       voice_label: "목소리 선택",
       voice_options: {
-        male_std: "남성 (표준)",
-        female_std: "여성 (표준)",
-        male_pro: "남성 (프로페셔널)",
-        female_emo: "여성 (감성적)"
+        alloy: "Alloy",
+        echo: "Echo",
+        fable: "Fable",
+        onyx: "Onyx",
+        nova: "Nova",
+        shimmer: "Shimmer"
       },
       btn_generate: "오디오 생성하기",
       btn_generating: "생성 중...",

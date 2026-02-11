@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
-import { Mic, Video, Upload, Play, Pause, Download, Wand2, Languages, Loader2 } from 'lucide-react';
+import { Mic, Video, Upload, Play, Pause, Download, Wand2, Languages, Loader2, Volume2 } from 'lucide-react';
 import { generateAudio } from '@/app/actions';
 
 const Playground = () => {
@@ -14,6 +14,7 @@ const Playground = () => {
     const [hasGenerated, setHasGenerated] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [activeVoice, setActiveVoice] = useState('alloy'); // Default voice
+    const [volume, setVolume] = useState(1); // Default volume 1.0 (100%)
 
     // Handle audio playback ending
     useEffect(() => {
@@ -35,7 +36,7 @@ const Playground = () => {
                 const audioSrc = `data:audio/mp3;base64,${result.audioContent}`;
                 if (audioRef.current) {
                     audioRef.current.src = audioSrc;
-                    audioRef.current.play();
+                    audioRef.current.play().catch(e => console.log("Auto-play blocked:", e));
                     setIsPlaying(true);
                     setHasGenerated(true); // Set generated state on successful playback
                 }
@@ -58,6 +59,25 @@ const Playground = () => {
                 audioRef.current.play();
             }
             setIsPlaying(!isPlaying);
+        }
+    };
+
+    const handleDownload = () => {
+        if (audioRef.current && audioRef.current.src) {
+            const link = document.createElement('a');
+            link.href = audioRef.current.src;
+            link.download = `voiceceleb-audio-${Date.now()}.mp3`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    };
+
+    const handleVolumeChange = (e) => {
+        const newVolume = parseFloat(e.target.value);
+        setVolume(newVolume);
+        if (audioRef.current) {
+            audioRef.current.volume = newVolume;
         }
     };
 
@@ -181,14 +201,34 @@ const Playground = () => {
                                         <div className="h-full w-1/3 bg-accent-blue rounded-full" />
                                     </div>
 
-                                    <div className="flex gap-4">
-                                        <button className="text-slate-400 hover:text-white transition-colors">
+                                    <div className="flex gap-4 items-center">
+                                        {/* Volume Control */}
+                                        <div className="flex items-center gap-2 group relative">
+                                            <Volume2 className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
+                                            <input
+                                                type="range"
+                                                min="0"
+                                                max="1"
+                                                step="0.1"
+                                                value={volume}
+                                                onChange={handleVolumeChange}
+                                                className="w-20 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full hover:[&::-webkit-slider-thumb]:scale-110 transition-all"
+                                            />
+                                        </div>
+
+                                        <button
+                                            onClick={handleDownload}
+                                            className="text-slate-400 hover:text-white transition-colors"
+                                        >
                                             <Download className="w-6 h-6" />
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         )}
+
+                        {/* Hidden Audio Element for Playback - Moved outside conditional */}
+                        <audio ref={audioRef} className="hidden" />
 
                         {/* Sticky Generate Button */}
                         {!hasGenerated && !isGenerating && (
