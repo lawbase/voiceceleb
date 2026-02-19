@@ -16,6 +16,16 @@ const Playground = () => {
     const [activeVoice, setActiveVoice] = useState('alloy'); // Default voice
     const [volume, setVolume] = useState(1); // Default volume 1.0 (100%)
 
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+
+    const formatTime = (time) => {
+        if (isNaN(time)) return "0:00";
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+
     // Handle audio playback ending
     useEffect(() => {
         if (audioRef.current) {
@@ -191,14 +201,23 @@ const Playground = () => {
 
                                 <div className="flex items-center justify-between px-4 bg-white/5 rounded-2xl py-4 backdrop-blur-md">
                                     <button
-                                        onClick={() => setIsPlaying(!isPlaying)}
+                                        onClick={handlePlayPause}
                                         className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:scale-105 transition-transform text-black"
                                     >
                                         {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current ml-1" />}
                                     </button>
 
-                                    <div className="flex-1 mx-6 h-1 bg-white/10 rounded-full overflow-hidden">
-                                        <div className="h-full w-1/3 bg-accent-blue rounded-full" />
+                                    <div className="flex-1 mx-6 flex flex-col gap-1">
+                                        <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                                            <div
+                                                className="h-full bg-accent-blue rounded-full transition-all duration-100 ease-linear"
+                                                style={{ width: `${(currentTime / duration) * 100}%` }}
+                                            />
+                                        </div>
+                                        <div className="flex justify-between text-xs text-slate-400 font-mono">
+                                            <span>{formatTime(currentTime)}</span>
+                                            <span>{formatTime(duration)}</span>
+                                        </div>
                                     </div>
 
                                     <div className="flex gap-4 items-center">
@@ -228,7 +247,13 @@ const Playground = () => {
                         )}
 
                         {/* Hidden Audio Element for Playback - Moved outside conditional */}
-                        <audio ref={audioRef} className="hidden" />
+                        <audio
+                            ref={audioRef}
+                            className="hidden"
+                            onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
+                            onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+                            onEnded={() => setIsPlaying(false)}
+                        />
 
                         {/* Sticky Generate Button */}
                         {!hasGenerated && !isGenerating && (
