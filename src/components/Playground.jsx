@@ -202,12 +202,12 @@ const Playground = () => {
                                 <div className="flex items-center justify-between px-4 bg-white/5 rounded-2xl py-4 backdrop-blur-md">
                                     <button
                                         onClick={handlePlayPause}
-                                        className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:scale-105 transition-transform text-black"
+                                        className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:scale-105 transition-transform text-black flex-shrink-0"
                                     >
                                         {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current ml-1" />}
                                     </button>
 
-                                    <div className="flex-1 mx-6 flex flex-col gap-1">
+                                    <div className="flex-1 mx-3 md:mx-6 flex flex-col gap-1">
                                         <div className="h-1 bg-white/10 rounded-full overflow-hidden">
                                             <div
                                                 className="h-full bg-accent-blue rounded-full transition-all duration-100 ease-linear"
@@ -222,7 +222,7 @@ const Playground = () => {
 
                                     <div className="flex gap-4 items-center">
                                         {/* Volume Control */}
-                                        <div className="flex items-center gap-2 group relative">
+                                        <div className="hidden md:flex items-center gap-2 group relative">
                                             <Volume2 className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
                                             <input
                                                 type="range"
