@@ -9,7 +9,7 @@ const Hero = () => {
 
     return (
         <section
-            className="relative pt-40 pb-32 overflow-hidden flex flex-col items-center justify-center text-center px-6 bg-cover bg-center bg-no-repeat bg-navy-900/80 bg-blend-overlay"
+            className="relative pt-40 pb-32 overflow-hidden flex flex-col items-center justify-center text-center px-6 bg-cover bg-center bg-no-repeat bg-navy-900/40 bg-blend-overlay"
             style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
         >
             {/* Background Elements */}
