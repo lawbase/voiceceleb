@@ -8,7 +8,10 @@ const Hero = () => {
     const { t } = useLanguage();
 
     return (
-        <section className="relative pt-40 pb-32 overflow-hidden flex flex-col items-center justify-center text-center px-6 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center bg-no-repeat bg-navy-900/80 bg-blend-overlay">
+        <section
+            className="relative pt-40 pb-32 overflow-hidden flex flex-col items-center justify-center text-center px-6 bg-cover bg-center bg-no-repeat bg-navy-900/80 bg-blend-overlay"
+            style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
+        >
             {/* Background Elements */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-accent-blue opacity-10 blur-[100px] rounded-full pointer-events-none" />
 
