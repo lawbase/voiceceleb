@@ -163,7 +163,7 @@ export const translations = {
         submit: "전송하기"
       },
       info: {
-        address: "경기도 성남시 수정구 금토로80번길 40, 301호",
+        address: "경기 성남시 수정구 금토로80번길 40, 301호",
         email: "info@witz.ai",
         telephone: "02-6954-7721"
       }
