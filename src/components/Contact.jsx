@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useLanguage } from './LanguageContext';
-import { Mail, MapPin, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, MapPin, Loader2, CheckCircle, AlertCircle, Phone } from 'lucide-react';
 import { sendEmail } from '@/app/actions';
 
 const Contact = () => {
@@ -33,7 +33,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-navy-900 relative">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-          
+
           {/* Contact Info */}
           <div className="space-y-8 animate-fade-in opacity-0">
             <div>
@@ -61,6 +61,16 @@ const Contact = () => {
                   <p className="text-slate-400">{t.contact.info.email}</p>
                 </div>
               </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5 text-accent-cyan" />
+                </div>
+                <div>
+                  <h4 className="text-white font-medium mb-1">Tel.</h4>
+                  <p className="text-slate-400">{t.contact.info.telephone}</p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -68,29 +78,29 @@ const Contact = () => {
           <form onSubmit={handleSubmit} className="bg-navy-800 p-8 rounded-3xl border border-white/5 shadow-2xl animate-fade-in delay-100 opacity-0 fill-mode-forwards space-y-4">
             <div>
               <label className="block text-sm font-medium text-slate-400 mb-2">{t.contact.form.name}</label>
-              <input 
-                name="name" 
-                type="text" 
-                required 
-                className="w-full bg-navy-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-cyan transition-colors" 
+              <input
+                name="name"
+                type="text"
+                required
+                className="w-full bg-navy-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-cyan transition-colors"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-400 mb-2">{t.contact.form.email}</label>
-              <input 
-                name="email" 
-                type="email" 
-                required 
-                className="w-full bg-navy-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-cyan transition-colors" 
+              <input
+                name="email"
+                type="email"
+                required
+                className="w-full bg-navy-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-cyan transition-colors"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-400 mb-2">{t.contact.form.message}</label>
-              <textarea 
-                name="message" 
-                rows="4" 
-                required 
-                className="w-full bg-navy-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-cyan transition-colors resize-none" 
+              <textarea
+                name="message"
+                rows="4"
+                required
+                className="w-full bg-navy-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-cyan transition-colors resize-none"
               />
             </div>
 
@@ -108,8 +118,8 @@ const Contact = () => {
               </div>
             )}
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={isSubmitting}
               className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
@@ -126,7 +136,7 @@ const Contact = () => {
 
         </div>
       </div>
-      
+
       {/* Footer separator line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </section>
