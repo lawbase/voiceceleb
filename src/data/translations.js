@@ -8,7 +8,7 @@ export const translations = {
       lang_toggle: "EN"
     },
     hero: {
-      title_start: "With Bae Han-sung & 11Labs,",
+      title_start: "With 11Labs\n& Bae Han-sung,",
       title_end: "Celeb Voice",
       subtitle: "Experience a high-quality voice generation solution that sounds even more like Bae Han-sung than Bae Han-sung himself, and contact us.",
       cta: "Explore Features"
@@ -102,7 +102,7 @@ export const translations = {
       lang_toggle: "KR"
     },
     hero: {
-      title_start: "배한성 11Labs와 함께하는",
+      title_start: "11Labs와\n함께하는 배한성",
       title_end: "Celeb 보이스",
       subtitle: "배한성보다 더 배한성 같은 고품질 음성 생성 솔루션을 경험해보시고, 문의하세요.",
       cta: "기능 살펴보기"

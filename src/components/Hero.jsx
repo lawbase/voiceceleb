@@ -21,7 +21,7 @@ const Hero = () => {
                         ✨ Voice Cloning Technology V2.0
                     </span>
 
-                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight text-white">
+                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight text-white whitespace-pre-line">
                         {t.hero.title_start} <br className="hidden md:block" />
                         <span className="text-gradient hover:scale-105 transition-transform inline-block">{t.hero.title_end}</span>
                     </h1>
