@@ -8,7 +8,7 @@ export const translations = {
       lang_toggle: "EN"
     },
     hero: {
-      title_start: "The Future of Voice AI",
+      title_start: "With Bae Han-sung & 11Labs,",
       title_end: "Celeb Voice",
       subtitle: "Experience high-fidelity voice cloning and global dubbing solutions that sound undeniably human.",
       cta: "Explore Features"
@@ -70,7 +70,8 @@ export const translations = {
       },
       info: {
         address: "301, 40, Geumto-ro 80beon-gil, Sujeong-gu, Seongnam-si, Gyeonggi-do",
-        email: "info@witz.ai"
+        email: "info@witz.ai",
+        telephone: "02-6954-7721"
       }
     },
     playground: {
@@ -101,7 +102,7 @@ export const translations = {
       lang_toggle: "KR"
     },
     hero: {
-      title_start: "보이스 AI의 미래",
+      title_start: "배한성 11Labs와 함께하는",
       title_end: "Celeb 보이스",
       subtitle: "사람보다 더 사람 같은 고품질 음성 복제와 글로벌 더빙 솔루션을 경험해보세요.",
       cta: "기능 살펴보기"
@@ -163,7 +164,8 @@ export const translations = {
       },
       info: {
         address: "경기도 성남시 수정구 금토로80번길 40, 301호",
-        email: "info@witz.ai"
+        email: "info@witz.ai",
+        telephone: "02-6954-7721"
       }
     },
     playground: {
