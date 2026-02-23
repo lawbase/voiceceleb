@@ -8,12 +8,15 @@ const Hero = () => {
     const { t } = useLanguage();
 
     return (
-        <section
-            className="relative pt-40 pb-32 overflow-hidden flex flex-col items-center justify-center text-center px-6 bg-cover bg-center bg-no-repeat bg-navy-900/40 bg-blend-overlay"
-            style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
-        >
-            {/* Background Elements */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-accent-blue opacity-10 blur-[100px] rounded-full pointer-events-none" />
+        <section className="relative pt-40 pb-32 overflow-hidden flex flex-col items-center justify-center text-center px-6 w-full min-h-[600px]">
+            {/* Background Image Layer */}
+            <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-navy-900/40 bg-blend-overlay z-0"
+                style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
+            />
+
+            {/* Background Gradient Element */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-accent-blue opacity-10 blur-[100px] rounded-full pointer-events-none z-0" />
 
             <div className="relative z-10 max-w-4xl mx-auto space-y-8">
                 <div className="animate-fade-in opacity-0">
