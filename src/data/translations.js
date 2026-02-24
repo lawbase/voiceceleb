@@ -81,7 +81,7 @@ export const translations = {
       input_placeholder: "Type something here to generate speech...",
       voice_label: "Select Voice",
       voice_options: {
-        bae: "Bae Han-sung",
+        bae: "Bae Han-sung Lecture",
         alloy: "Alloy",
         echo: "Echo",
         fable: "Fable",
@@ -176,7 +176,7 @@ export const translations = {
       input_placeholder: "음성으로 변환할 텍스트를 입력하세요...",
       voice_label: "목소리 선택",
       voice_options: {
-        bae: "배한성",
+        bae: "배한성강연",
         alloy: "Alloy",
         echo: "Echo",
         fable: "Fable",
