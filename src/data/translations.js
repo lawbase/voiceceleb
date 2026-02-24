@@ -82,7 +82,7 @@ export const translations = {
             "Head of Management, IT Company",
             "Specialized Attorney for IT Startups",
             "Obtained Attorney/Patent Attorney License ('15)",
-            "Seoul National Univ., Computer Eng. & Law",
+            "Seoul National Univ., CS & Law",
             "Gyeongnam Science High School"
           ]
         },
