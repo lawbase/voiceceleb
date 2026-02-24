@@ -42,9 +42,7 @@ export default function RootLayout({ children }) {
         <LanguageProvider>
           {children}
         </LanguageProvider>
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        )}
+        <GoogleAnalytics gaId="G-4QP294DYTH" />
       </body>
     </html>
   );
