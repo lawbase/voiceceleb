@@ -65,6 +65,7 @@ export const translations = {
       members: [
         {
           name: "Jinik Park",
+          image: "/images/jinik_Park.jpg",
           desc: [
             "Investigator, IP Dept. Seoul High/Central District Court ('16~'22)",
             "Examiner, KIPO ('15~'16)",
@@ -75,6 +76,7 @@ export const translations = {
         },
         {
           name: "Jungmin Kim",
+          image: "/images/Jungmin_Kim.jpg",
           desc: [
             "Vice Chair, Blockchain Special Committee of Korean Bar Assoc.",
             "Head of Management, IT Company",
@@ -86,6 +88,7 @@ export const translations = {
         },
         {
           name: "Giho Lee",
+          image: "/images/Giho_Lee.jpg",
           desc: [
             "CJ-logistics Project ('21~'22)",
             "US Cleaning Car Dispatch algorithm ('22)",
@@ -97,6 +100,7 @@ export const translations = {
         },
         {
           name: "Youngmok Yun",
+          image: "/images/Youngmok_Yun.jpg",
           desc: [
             "Current CTO, Harmonic Bionics",
             "Current Director, H-Robotics",
@@ -210,6 +214,7 @@ export const translations = {
       members: [
         {
           name: "Jinik Park",
+          image: "/images/jinik_Park.jpg",
           desc: [
             "서울고등법원/중앙지방법원 지식재산부 조사관 ('16~'22)",
             "특허청 심사관 ('15~'16)",
@@ -220,6 +225,7 @@ export const translations = {
         },
         {
           name: "Jungmin Kim",
+          image: "/images/Jungmin_Kim.jpg",
           desc: [
             "대한변호사협회 블록체인특위 부위원장",
             "IT기업 경영관리팀장",
@@ -231,6 +237,7 @@ export const translations = {
         },
         {
           name: "Giho Lee",
+          image: "/images/Giho_Lee.jpg",
           desc: [
             "CJ-logistics Project ('21~'22)",
             "미국 청소차 배차 알고리즘 ('22)",
@@ -242,6 +249,7 @@ export const translations = {
         },
         {
           name: "Youngmok Yun",
+          image: "/images/Youngmok_Yun.jpg",
           desc: [
             "현. 하모닉바이오닉스 CTO",
             "현. 에이치로보틱스 이사",
