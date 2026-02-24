@@ -76,16 +76,18 @@ ${message}
 
 
 export async function generateAudio(text, voiceId) {
-    if (voiceId === 'bae') {
+    if (voiceId === 'bae' || voiceId === 'bae_gadget') {
         const elevenLabsApiKey = process.env.ELEVENLABS_API_KEY;
-        const baeVoiceId = process.env.ELEVENLABS_BAE_VOICE_ID || 'Xb7hH8MSALEsuEVAigZE'; // Default fallback ID
+        const targetVoiceId = voiceId === 'bae'
+            ? (process.env.ELEVENLABS_BAE_VOICE_ID || 'Xb7hH8MSALEsuEVAigZE')
+            : (process.env.ELEVENLABS_BAE_GADGET_VOICE_ID || 'fallback_gadget_id_here');
 
         if (!elevenLabsApiKey) {
             return { success: false, error: 'ElevenLabs API Key is missing. Please check .env.local' };
         }
 
         try {
-            const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${baeVoiceId}`, {
+            const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${targetVoiceId}`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'audio/mpeg',
