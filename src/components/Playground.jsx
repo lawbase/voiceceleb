@@ -125,7 +125,11 @@ const Playground = () => {
                             <>
                                 <div className="flex justify-between items-center mb-6">
                                     <label className="text-sm font-medium text-slate-400 uppercase tracking-wider">{t.playground.voice_label}</label>
-                                    <select className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-accent-blue">
+                                    <select
+                                        className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-accent-blue"
+                                        value={activeVoice}
+                                        onChange={(e) => setActiveVoice(e.target.value)}
+                                    >
                                         {Object.entries(t.playground.voice_options).map(([key, label]) => (
                                             <option key={key} value={key}>{label}</option>
                                         ))}
