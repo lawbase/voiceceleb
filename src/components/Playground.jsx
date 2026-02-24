@@ -13,7 +13,7 @@ const Playground = () => {
     const audioRef = useRef(null);
     const [hasGenerated, setHasGenerated] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [activeVoice, setActiveVoice] = useState('alloy'); // Default voice
+    const [activeVoice, setActiveVoice] = useState('bae'); // Default voice
     const [volume, setVolume] = useState(1); // Default volume 1.0 (100%)
 
     const [currentTime, setCurrentTime] = useState(0);

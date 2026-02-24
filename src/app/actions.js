@@ -76,6 +76,48 @@ ${message}
 
 
 export async function generateAudio(text, voiceId) {
+    if (voiceId === 'bae') {
+        const elevenLabsApiKey = process.env.ELEVENLABS_API_KEY;
+        const baeVoiceId = process.env.ELEVENLABS_BAE_VOICE_ID || 'Xb7hH8MSALEsuEVAigZE'; // Default fallback ID
+
+        if (!elevenLabsApiKey) {
+            return { success: false, error: 'ElevenLabs API Key is missing. Please check .env.local' };
+        }
+
+        try {
+            const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${baeVoiceId}`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'audio/mpeg',
+                    'Content-Type': 'application/json',
+                    'xi-api-key': elevenLabsApiKey
+                },
+                body: JSON.stringify({
+                    text: text,
+                    model_id: "eleven_multilingual_v2",
+                    voice_settings: {
+                        stability: 0.5,
+                        similarity_boost: 0.75
+                    }
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.detail?.message || 'ElevenLabs API request failed.');
+            }
+
+            const arrayBuffer = await response.arrayBuffer();
+            const buffer = Buffer.from(arrayBuffer);
+            const audioContent = buffer.toString('base64');
+
+            return { success: true, audioContent: audioContent };
+        } catch (error) {
+            console.error('Error generating audio with ElevenLabs:', error);
+            return { success: false, error: error.message || 'Failed to generate audio via ElevenLabs.' };
+        }
+    }
+
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
         return { success: false, error: 'OpenAI API Key is missing.' };
