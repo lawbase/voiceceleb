@@ -131,7 +131,7 @@ const Playground = () => {
                                         onChange={(e) => setActiveVoice(e.target.value)}
                                     >
                                         {Object.entries(t.playground.voice_options).map(([key, label]) => (
-                                            <option key={key} value={key}>{label}</option>
+                                            <option key={key} value={key} className="bg-navy-800 text-white">{label}</option>
                                         ))}
                                     </select>
                                 </div>
