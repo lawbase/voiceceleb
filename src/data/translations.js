@@ -76,7 +76,7 @@ export const translations = {
         {
           name: "Jungmin Kim",
           desc: [
-            "Sec., Blockchain Special Committee of Korean Bar Assoc.",
+            "Vice Chair, Blockchain Special Committee of Korean Bar Assoc.",
             "Head of Management, IT Company",
             "Specialized Attorney for IT Startups",
             "Obtained Attorney/Patent Attorney License ('15)",
@@ -221,7 +221,7 @@ export const translations = {
         {
           name: "Jungmin Kim",
           desc: [
-            "대한변호사협회 블록체인특위 간사",
+            "대한변호사협회 블록체인특위 부위원장",
             "IT기업 경영관리팀장",
             "IT 스타트업 기업법 전문",
             "변호사/변리사 취득 ('15)",
