@@ -59,6 +59,55 @@ export const translations = {
         }
       ]
     },
+    team: {
+      title: "Team",
+      subtitle: "Our hardworking founders.",
+      members: [
+        {
+          name: "Jinik Park",
+          desc: [
+            "Investigator, IP Dept. Seoul High/Central District Court ('16~'22)",
+            "Examiner, KIPO ('15~'16)",
+            "Obtained Attorney/Patent Attorney License ('15)",
+            "Renault Samsung Motors ('08~'12)",
+            "POSTECH B.S. ('06), M.S. ('08)"
+          ]
+        },
+        {
+          name: "Jungmin Kim",
+          desc: [
+            "Sec., Blockchain Special Committee of Korean Bar Assoc.",
+            "Head of Management, IT Company",
+            "Specialized Attorney for IT Startups",
+            "Obtained Attorney/Patent Attorney License ('15)",
+            "Seoul National Univ., Computer Eng. & Law",
+            "Gyeongnam Science High School"
+          ]
+        },
+        {
+          name: "Giho Lee",
+          desc: [
+            "CJ-logistics Project ('21~'22)",
+            "US Cleaning Car Dispatch algorithm ('22)",
+            "Thira-utech Co., Ltd. ('12~'14)",
+            "IT Dev LG, Samsung project",
+            "LIG Nex1 ('09~'10)",
+            "POSTECH B.S. ('08), M.S. ('12)"
+          ]
+        },
+        {
+          name: "Youngmok Yun",
+          desc: [
+            "Current CTO, Harmonic Bionics",
+            "Current Director, H-Robotics",
+            "Ph.D., UT Austin",
+            "Renault Samsung Motors ('08~'12)",
+            "POSTECH B.S. ('06), M.S. ('08)",
+            "Gyeonggi Science High School"
+          ]
+        }
+      ]
+    },
     contact: {
       title: "Get in Touch",
       subtitle: "Have questions? We'd love to hear from you.",
@@ -152,6 +201,55 @@ export const translations = {
           period: "",
           features: ["무제한 생성", "커스텀 보이스 모델", "API 액세스", "전담 매니저"],
           cta: "영업팀 문의"
+        }
+      ]
+    },
+    team: {
+      title: "만든 사람들",
+      subtitle: "우리의 열정적인 창업자들입니다.",
+      members: [
+        {
+          name: "Jinik Park",
+          desc: [
+            "서울고등법원/중앙지방법원 지식재산부 조사관 ('16~'22)",
+            "특허청 심사관 ('15~'16)",
+            "변호사/변리사 취득 ('15)",
+            "르노삼성자동차 ('08~'12)",
+            "POSTECH 학사 ('06), 석사 ('08)"
+          ]
+        },
+        {
+          name: "Jungmin Kim",
+          desc: [
+            "대한변호사협회 블록체인특위 간사",
+            "IT기업 경영관리팀장",
+            "IT 스타트업 기업법 전문",
+            "변호사/변리사 취득 ('15)",
+            "서울대 컴퓨터공학, 법학",
+            "경남과학고등학교"
+          ]
+        },
+        {
+          name: "Giho Lee",
+          desc: [
+            "CJ-logistics Project ('21~'22)",
+            "미국 청소차 배차 알고리즘 ('22)",
+            "(주)티라텍 ('12~'14)",
+            "IT 개발 LG, Samsung project",
+            "LIG넥스원 ('09~'10)",
+            "POSTECH 학사 ('08), 석사 ('12)"
+          ]
+        },
+        {
+          name: "Youngmok Yun",
+          desc: [
+            "현. 하모닉바이오닉스 CTO",
+            "현. 에이치로보틱스 이사",
+            "텍사스 오스틴 대학 박사",
+            "르노삼성자동차 ('08~'12)",
+            "POSTECH 학사 ('06), 석사 ('08)",
+            "경기과학고등학교"
+          ]
         }
       ]
     },

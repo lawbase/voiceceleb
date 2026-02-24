@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Playground from "@/components/Playground";
 import Features from "@/components/Features";
 import Pricing from "@/components/Pricing";
+import Team from "@/components/Team";
 import Contact from "@/components/Contact";
 import { Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
 
@@ -31,6 +32,7 @@ export default function Home() {
         <Playground />
         <Features />
         <Pricing />
+        <Team />
       </main>
       <Footer />
     </div>
