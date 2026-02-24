@@ -79,7 +79,7 @@ export async function generateAudio(text, voiceId) {
     if (voiceId === 'bae' || voiceId === 'bae_gadget') {
         const elevenLabsApiKey = process.env.ELEVENLABS_API_KEY;
         const targetVoiceId = voiceId === 'bae'
-            ? (process.env.ELEVENLABS_BAE_VOICE_ID || 'Xb7hH8MSALEsuEVAigZE')
+            ? (process.env.ELEVENLABS_BAE_LECTURE_VOICE_ID || 'Xb7hH8MSALEsuEVAigZE')
             : (process.env.ELEVENLABS_BAE_GADGET_VOICE_ID || 'fallback_gadget_id_here');
 
         if (!elevenLabsApiKey) {
