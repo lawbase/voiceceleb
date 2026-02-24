@@ -139,10 +139,11 @@ const Playground = () => {
                                     className="w-full flex-1 bg-transparent border-none resize-none text-lg leading-relaxed focus:outline-none placeholder:text-white/20 text-white"
                                     placeholder={t.playground.input_placeholder}
                                     value={inputText}
-                                    onChange={(e) => setInputText(e.target.value)}
+                                    onChange={(e) => setInputText(e.target.value.slice(0, 500))}
+                                    maxLength={500}
                                 />
                                 <div className="mt-6 flex justify-between items-center text-sm text-slate-400 border-t border-white/5 pt-4">
-                                    <span>{inputText.length} chars</span>
+                                    <span>{inputText.length} / 500</span>
                                     <button
                                         onClick={() => setInputText('')}
                                         className="hover:text-white transition-colors"
