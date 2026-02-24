@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageContext";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -41,6 +42,9 @@ export default function RootLayout({ children }) {
         <LanguageProvider>
           {children}
         </LanguageProvider>
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   );
